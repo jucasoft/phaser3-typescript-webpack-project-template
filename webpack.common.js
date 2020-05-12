@@ -6,11 +6,9 @@ const CopyPlugin = require('copy-webpack-plugin');
 const dist = path.resolve(__dirname, 'dist');
 
 module.exports = {
-    mode: "development",
     entry: {
         app: './src/index.ts'
     },
-    devtool: 'inline-source-map', // source map per poter debuggare
     plugins: [
         new CleanWebpackPlugin(), // elimina i file precedentemente creati
         new HtmlWebpackPlugin({
@@ -21,9 +19,6 @@ module.exports = {
             {from: './src/assets', to: './assets/'}
         ]),
     ],
-    devServer: {
-        contentBase: '/dist'
-    },
     output: {
         filename: '[name].bundle.js', // [name] sintassi per usare variabili, in questo caso la chiave dell'oggetto "entry"
         path: dist
